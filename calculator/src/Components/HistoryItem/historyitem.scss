@@ -1,0 +1,20 @@
+.history__item {
+    margin: 20px 0;
+    font-family: "Arial";
+    &-no {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    &-display {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    &-result {
+        margin-left: 100px;
+        padding: 10px 0;
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
