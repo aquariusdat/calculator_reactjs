@@ -32,6 +32,7 @@ function App() {
   }, [history])
 
 
+
   function handleButtonClick(value) {
     if (display.length >= 0 && display.length <= 18) {
       setPreDisplay('');
@@ -63,7 +64,6 @@ function App() {
         }
       }
       else {
-
         let pDisplay = display + value;
         setDisplay(pDisplay);
       }
@@ -95,8 +95,24 @@ function App() {
     }
   }
 
+  function checkContainsOperator(arr, string) {
+    let myString = [...string];
+    for (var i of myString) {
+      console.log(i);
+      if (arr.includes(i)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   async function handleSetResult(value) {
+
+    if (checkContainsOperator(arrOperator, display) === false) {
+      console.log('false');
+      return;
+    }
+
     let flg = checkResult();
 
     setResult(flg);
@@ -144,13 +160,18 @@ function App() {
     }
     return false;
   }
+
+
+  function handleDeleteHistory() {
+    setHistory(null);
+  }
   // ****************************************
 
   return (
     <div className="App">
       <div className="container">
         <div className="history__wrapper">
-          <History data={history} />
+          <History data={history} deleteHistory={handleDeleteHistory} />
         </div>
         <div className="calculator">
           <div className="calculator__display">
